@@ -1,0 +1,11 @@
+# Disabling SELINUX
+          - name: Disabling SELINUX
+            when: firewalld_status.failed == false
+            selinux:
+              state: permissive
+              policy: targeted
+            register: SEL_Disable_status
+
+          - name: SeLinux Disable Status
+            debug:
+                    msg: "SeLinux Disable Failed Status => {{ SEL_Disable_status.failed }}"

@@ -1,0 +1,16 @@
+# Adding Ip of hosts in the /etc/hosts File
+          - name: Adding information about all the hosts
+            blockinfile:
+              dest: "/etc/hosts"
+              
+              # Example IP's
+              block: " 10.16.1.5     master \n
+                       10.16.1.7     worker1 \n
+                       10.16.1.3     worker2  "
+              marker: ""
+              
+            register: Swap_Replace_status
+
+          - name: Swap_Replace Status
+            debug:
+                    msg: "Swap Replace Failed Status => {{ Swap_Replace_status.failed }}"

@@ -1,0 +1,14 @@
+- name: PlayBook to configure Kubernetes_Master (Final Configuration of KubeAdm)
+  hosts: Kubernetes_Master
+  tasks:
+# Initializing the Master Node with Kubeadm service
+          - name: Initializing Master Node
+            shell:
+            # Add the network range to be used!
+              cmd: kubeadm init --pod-network-cidr=10.5.1.1/16
+            register: KubeAdm_status
+            ignore_errors: yes
+
+          - name: KubeAdm Status
+            debug:
+                  msg: "{{ KubeAdm_status }}

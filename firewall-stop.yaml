@@ -1,0 +1,10 @@
+# Stopping firewall daemon for Docker Container to run smoothly! 
+          - name: Disabling Firewall Daemon
+            service:
+                    name: firewalld
+                    state: stopped
+            register: firewalld_status
+
+          - name: Firewall Daemon Status
+            debug:
+                    msg: "Firewall Daemon Failed State => {{ firewalld_status.state}}"

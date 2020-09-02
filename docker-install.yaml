@@ -1,0 +1,10 @@
+# Installing Docker 
+          - name: Download Docker-CE 
+            when: docker_ce_status.failed == false
+            command:
+              cmd: dnf install -y docker-ce --nobest
+            register: docker_install_status
+
+          - name: Docker Installation Status
+            debug:
+                    msg: "Docker Installation Return Code => {{ docker_install_status.rc }}"

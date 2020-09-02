@@ -1,0 +1,11 @@
+ # Starting & Enabling the Kubelet Service
+          - name: Starting & Enabling Kubelet
+            service:
+              name: "kubelet"
+              state: started
+              enabled: yes
+            register: Kubelet_status
+
+          - name: Kubelete Service Status
+            debug:
+                    msg: "Kubelet service failed => {{ Kubelet_status.failed }}"

@@ -1,0 +1,7 @@
+# Code to run the POD on the managed Nodes!
+- name: Running Pod from my webserver Image
+  hosts: Kubernetes_Master
+  tasks:
+    # Running the Pod
+    name: Running Webserver Pod
+    shell: kubectl run Webserver --image=harshitdawar/apache-webserver-and-php

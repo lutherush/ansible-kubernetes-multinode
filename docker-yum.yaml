@@ -1,0 +1,14 @@
+ # Configuring Yum for the Docker Repository
+          - name: Configuring Docker Yum Repository
+            when: epel_status.failed == false
+            yum_repository:
+                    name: docker-ce
+                    file: docker-ce
+                    description: Configure the Docker Community Edition repo
+                    baseurl: https://download.docker.com/linux/centos/7/x86_64/stable/
+                    gpgcheck: no
+            register: docker_ce_status
+
+          - name: Docker-CE Status
+            debug:
+                    msg: "Did Docker Configuration Failed => {{  docker_ce_status.failed }}"

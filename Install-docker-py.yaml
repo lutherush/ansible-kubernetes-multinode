@@ -1,0 +1,11 @@
+ # Downloading Docker-py Module for the Docker Pull to run on the managed node!
+          - name: Download docker-py Module
+            when: docker_service_status.state == "started"
+            pip:
+                    name: "docker-py"
+                    state: present
+            register: docker_py_status
+
+          - name: Docker-py Status
+            debug:
+                    msg: "Docker Py Download Failed Status => {{ docker_py_status.failed}}"

@@ -1,0 +1,10 @@
+ # Installing Python3 in the Machine for Pip3 and Docker-py Module
+          - name: Installing Python3 and Pip3
+            package:
+              name: python36
+              state: present
+            register: p36_status
+
+          - name: Python3 & Pip3 Status
+            debug:
+                    msg: "Python3 & Pip3 Download Failed Status => {{ p36_status.failed}}"

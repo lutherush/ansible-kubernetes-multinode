@@ -1,0 +1,10 @@
+# Restarting docker services
+          - name: Restarting Docker services
+            service:
+              name: "docker"
+              state: restarted
+            register: DSR_Status
+
+          - name: Docker restart Reload Status
+            debug:
+                    msg: "DSR Reload Failed Status => {{ IPRouteTC_status.failed }}"

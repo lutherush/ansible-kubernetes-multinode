@@ -1,0 +1,12 @@
+# Starting the Docker Services
+          - name: Start Docker Services
+            when: docker_install_status.rc == 0
+            service:
+                    name: "docker"
+                    state: started
+                    enabled: yes
+            register: docker_service_status
+
+          - name: Docker Service Status
+            debug:
+                    msg: "Docker Service Status => {{ docker_service_status.state}}"

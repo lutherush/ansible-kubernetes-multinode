@@ -1,0 +1,15 @@
+# Installing Kubernetes 
+          - name: Download Kubernetes
+            when: kubernetes_status.failed == false
+            package:
+              name:
+                - "kubeadm"
+                - "kubelet"
+                - "kubectl"
+              state: present
+              disable_excludes: "kubernetes"
+            register: k8_install_status
+
+          - name: Kubernetes Installation Status
+            debug:
+                    msg: "Kubernetes Installation Return Code => {{ k8_install_status.rc }}"

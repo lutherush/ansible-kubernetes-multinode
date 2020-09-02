@@ -1,0 +1,19 @@
+# Adding the name to the Ansible-Playbook
+- name: PlayBook to configure Kubernetes_Master
+# Name of the group of hosts to configure.
+  hosts: Kubernetes_Master
+  tasks:
+          # Configuring Yum for Epel Packages
+          - name: Configure the Yum with epel
+            yum_repository:
+                    name: epel
+                    file: epel
+                    description: Configure the epel repo
+                    baseurl: https://dl.fedoraproject.org/pub/epel/7/x86_64/
+                    gpgcheck: no
+            register: epel_status
+
+       # Printing the status of the configuration on the console.
+          - name: Epel Status
+            debug:
+                    msg: "Did EPEL Configuration Failed => {{  epel_status.failed }}"
